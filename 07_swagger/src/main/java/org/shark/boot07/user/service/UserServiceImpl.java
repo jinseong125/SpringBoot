@@ -1,12 +1,12 @@
-package org.shark.boot06.user.service;
+package org.shark.boot07.user.service;
 
 import java.util.List;
 
-import org.shark.boot06.common.dto.PageDTO;
-import org.shark.boot06.common.util.PageUtil;
-import org.shark.boot06.user.dto.UserDTO;
-import org.shark.boot06.user.exception.UserNotFoundException;
-import org.shark.boot06.user.mapper.UserMapper;
+import org.shark.boot07.common.dto.PageDTO;
+import org.shark.boot07.common.util.PageUtil;
+import org.shark.boot07.user.dto.UserDTO;
+import org.shark.boot07.user.exception.UserNotFoundException;
+import org.shark.boot07.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,6 +1,6 @@
-package org.shark.boot06.common.util;
+package org.shark.boot07.common.util;
 
-import org.shark.boot06.common.dto.PageDTO;
+import org.shark.boot07.common.dto.PageDTO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,9 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component  //----- Spring Container에 PageUtil 타입의 빈이 등록됩니다.
 public class PageUtil {
-
-
-	  //----- 한 블록 당 표시할 페이지의 개수
+	 //----- 한 블록 당 표시할 페이지의 개수
 	  private static final int PAGE_PER_BLOCK = 10;
 	 
 	  /**
@@ -32,6 +30,5 @@ public class PageUtil {
 	    dto.setBeginPage(beginPage);
 	    dto.setEndPage(endPage);
 	  }
-	
 	
 }

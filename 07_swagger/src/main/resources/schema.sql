@@ -1,4 +1,4 @@
-USE db_boot06;
+USE db_boot07;
 
 DROP TABLE IF EXISTS tbl_user;
 

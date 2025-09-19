@@ -1,4 +1,4 @@
-package org.shark.boot06.user.exception;
+package org.shark.boot07.user.exception;
 
 // uncheckedException
 public class UserNotFoundException extends RuntimeException  {

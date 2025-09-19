@@ -1,9 +1,9 @@
-package org.shark.boot06.user.service;
+package org.shark.boot07.user.service;
 
 import java.util.List;
 
-import org.shark.boot06.common.dto.PageDTO;
-import org.shark.boot06.user.dto.UserDTO;
+import org.shark.boot07.common.dto.PageDTO;
+import org.shark.boot07.user.dto.UserDTO;
 
 public interface UserService {
 	List<UserDTO> getUserList(PageDTO dto, String sort);

@@ -1,4 +1,4 @@
-package org.shark.boot06.user.dto;
+package org.shark.boot07.user.dto;
 
 import java.time.LocalDateTime;
 
