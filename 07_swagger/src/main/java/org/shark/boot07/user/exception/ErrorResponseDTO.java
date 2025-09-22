@@ -5,13 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
+@ToString
 public class ErrorResponseDTO {
-	private String errorCode;
-	private String errorMessage;
+  private String errorCode;
+  private String errorMessage;
 }

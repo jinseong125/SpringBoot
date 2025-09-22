@@ -8,12 +8,13 @@ import org.shark.boot07.user.dto.UserDTO;
 
 @Mapper
 public interface UserMapper {
-    long selectUserCount();
-	List<UserDTO> selectUserList( @Param("offset")int offset,   @Param("size")int size, @Param("SORT")String sort);
-	UserDTO selectUserById(Long uid);
-	int insertUser(UserDTO user);
-	int updateUser(UserDTO user);
-	int deleteUser(Long uid);
-	long countAll(); // 추가
-
+  long selectUserCount();
+  List<UserDTO> selectUserList(
+      @Param(value = "offset") long offset, 
+      @Param(value = "size") long size, 
+      @Param(value = "sort") String sort);
+  UserDTO selectUserById(Long uid);
+  int insertUser(UserDTO user);
+  int updateUser(UserDTO user);
+  int deleteUser(Long uid);
 }
