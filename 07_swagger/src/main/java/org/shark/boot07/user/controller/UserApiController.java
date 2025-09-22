@@ -3,10 +3,11 @@ package org.shark.boot07.user.controller;
 import java.util.Map;
 
 import org.shark.boot07.common.dto.PageDTO;
+import org.shark.boot07.user.dto.enums.SortType;
 import org.shark.boot07.user.dto.request.UserCreateRequestDTO;
 import org.shark.boot07.user.dto.request.UserUpdateRequestDTO;
 import org.shark.boot07.user.dto.response.ApiUserResponseDTO;
-import org.shark.boot07.user.exception.ErrorResponseDTO;
+import org.shark.boot07.user.exception.ApiUserErrorResponseDTO;
 import org.shark.boot07.user.exception.UserNotFoundException;
 import org.shark.boot07.user.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -50,26 +51,6 @@ import lombok.RequiredArgsConstructor;
 public class UserApiController {
 
   private final UserService userService;
-  
-  // ExceptionHandler
-  /*
-  @ExceptionHandler(UserNotFoundException.class)
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  public ErrorResponseDTO handleUserNotFoundException(UserNotFoundException e) {
-    return ErrorResponseDTO.builder()
-              .errorCode("UE-100")
-              .errorMessage(e.getMessage())
-            .build();
-  }
-  */
-  @ExceptionHandler(UserNotFoundException.class)
-  public ResponseEntity<ErrorResponseDTO> handleUserNotFoundException(UserNotFoundException e) {
-    ErrorResponseDTO dto = ErrorResponseDTO.builder()
-        .errorCode("UE-100")
-        .errorMessage(e.getMessage())
-        .build();
-    return ResponseEntity.status(404).body(dto);
-  }
   
   /*
    * Postman 요청 시 주의사항
@@ -177,7 +158,8 @@ public class UserApiController {
     , @Parameter(name = "sort"
                , required = false
                , description = "사용자 정렬 방식"
-               , in = ParameterIn.QUERY)
+               , in = ParameterIn.QUERY
+               , schema = @Schema(implementation = SortType.class))
   })
   public ResponseEntity<ApiUserResponseDTO> list(
       PageDTO pageDTO,
