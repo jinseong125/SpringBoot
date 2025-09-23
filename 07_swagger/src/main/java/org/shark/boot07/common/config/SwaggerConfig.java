@@ -9,9 +9,6 @@ import io.swagger.v3.oas.models.info.Info;
 /**
  * Swagger End Point URL
  * http://localhost:8080/swagger-ui/index.html
- * 
- * Swagger UI HTML 문서 내보내기
- * 
  */
 
 @Configuration

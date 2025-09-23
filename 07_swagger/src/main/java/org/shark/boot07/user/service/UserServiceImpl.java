@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
   public UserDTO getUserById(Long uid) {
     UserDTO foundUser = userMapper.selectUserById(uid);
     if (foundUser == null) {
-      throw new UserNotFoundException(1, "회원 ID (" + uid + ") 조회 실패(상세)");
+      throw new UserNotFoundException(1, "회원 ID (" + uid + ") 조회 실패");
     } else {
       return foundUser;
     }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <h1>저장</h1>
+    <input type="text" id="save-bid" placeholder="bid"><br>
+    <input type="text" id="title" placeholder="title"><br>
+    <input type="text" id="content" placeholder="content"><br>
+    <button type="button" onClick="save()">저장</button>
+    
+  <h1>조회</h1>
+    <input type="number" id="find-bid"><br>
+    <button type="button" onClick="find()">조회</button>
+    <pre id="findResult"></pre>
+    
+  <h1>삭제</h1>
+    <input type="number" id="delete-bid"><br>
+    <button type="button" onClick="del()">삭제</button>
+    
+  <h1>결과</h1>
+    <div id="result"></div>  
+  
+  <script>
+  function save() {
+    const bid = document.getElementById('save-bid').value;
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const resultPre = document.getElementById('result');
+
+    const formData = new FormData();
+    formData.append("bid", bid);
+    formData.append("title", title);
+    formData.append("content", content);
+    fetch('/api/boards', {method:'post', body:formData})
+    .then(result => result.text())
+    .then(data => {
+      resultPre.innerHTML = JSON.stringify(data);
+      
+    })
+  }
+  
+  function find() {
+    const bid = document.getElementById('find-bid').value;
+    const resultPre = document.getElementById('result');
+
+    fetch(`/api/boards/${bid}`, {method:'get'})
+    .then(result => result.text())
+    .then(data => {
+      resultPre.innerHTML = JSON.stringify(data);
+    })
+  }
+  
+  function del() {
+    const bid = document.getElementById('delete-bid').value;
+    const resultPre = document.getElementById('result');
+
+    fetch(`/api/boards/${bid}`, {method:'delete'})
+    .then(result => result.text())
+    .then(data => {
+      resultPre.innerHTML = JSON.stringify(data);
+    })
+  }
+
+</script>
+</body>
+</html>

@@ -35,8 +35,8 @@ public class UserCreateRequestDTO {
   private Long uid;
   
   @Schema(description = "아이디(이메일)"
-         , nullable = false
-         , example = "id@example.com")
+        , nullable = false
+        , example = "id@example.com")
   // @Email(message = "이메일 형식이 올바르지 않습니다.")  /* 표준 이메일 검증 방식으로 검증 기능이 부족합니다. */
   @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$"
          , message = "이메일 형식이 올바르지 않습니다.")
@@ -45,13 +45,13 @@ public class UserCreateRequestDTO {
   private String username;
   
   @Schema(description = "비밀번호"
-         , nullable = false)
+        , nullable = false)
   @NotBlank(message = "비밀번호는 필수입니다.")
   @Size(max = 100, message = "비밀번호의 최대 글자 수는 100자입니다.")
   private String password;
   
   @Schema(description = "닉네임"
-         , nullable = false)
+        , nullable = false)
   @NotBlank(message = "닉네임은 필수입니다.")
   @Size(max = 100, message = "닉네임의 최대 글자 수는 100자입니다.")
   private String nickname;
