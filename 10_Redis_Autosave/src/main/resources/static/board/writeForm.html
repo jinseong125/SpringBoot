@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Board Write Form</title>
+</head>
+<body>
+
+  <h1>Board Write Form (30초마다 임시저장)</h1>
+  <form>
+  <label for="title">제목</label><br>
+  <input type="text" id="title"><br>
+  <label for="content">내용</label><br>
+  <textarea rows="5" cols="30" id="content"></textarea><br><br>
+  <button type="button" onclick="saveBoard()">작성완료</button>
+    <h1>결과</h1>
+    <div id="result"></div> 
+  </form>
+  <script type="text/javascript">
+  
+  const baseUrl = "/api/boards";
+  const resultPre = document.getElementById('result');
+  
+  //----- 자동 저장하는 함수
+  function autosave() {
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    fetch(baseUrl + "/autosave", {
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({
+        title, content
+      })
+      })
+    .then(result => result.text()) 
+     .then(data => {
+       console.log(data);
+     })
+    
+  }
+  
+  //----- 현재 페이지 로드 시 자동 저장된 정보 불러오는 함수
+  function loadDraft() {
+    const title = document.getElementById('title');
+    const content = document.getElementById('content');
+    fetch(baseUrl + "/autosave", {
+      method:'GET',
+      })
+      
+    .then(result => result.json()) 
+     .then(data => {
+       title.value = data.title;
+       content.value = data.content;
+     })
+  }
+  
+  function saveBoard() {
+    const title = document.getElementById('title');
+    const content = document.getElementById('content');
+    fetch(baseUrl, {
+      method:'POST',
+      })
+    .then(result => result.text()) 
+     .then(data => {
+       title.value = "";
+       content.value = "";
+       console.log(data);
+     })
+  }
+  
+  //----- 자동 저장은 30초마다 호출
+  setInterval(autosave, 3000);
+  
+  //----- 페이지 로드 시 정보 불러오기
+  loadDraft();
+  
+  </script>
+
+</body>
+</html>
